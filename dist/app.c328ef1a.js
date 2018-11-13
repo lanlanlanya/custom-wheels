@@ -11334,6 +11334,9 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
 var _default = {
   name: 'wheelButton',
   // props: ['icon', 'iconPosition']
@@ -11368,9 +11371,15 @@ exports.default = _default;
       class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj)
     },
     [
-      _c("g-icon", { attrs: { icon: _vm.icon } }),
+      _vm.icon
+        ? _c("g-icon", { staticClass: "icon", attrs: { icon: _vm.icon } })
+        : _vm._e(),
       _vm._v(" "),
-      _c("span", { staticClass: "content" }, [_vm._t("default")], 2)
+      _c("span", { staticClass: "content" }, [_vm._t("default")], 2),
+      _vm._v(" "),
+      _c("g-icon", { staticClass: "loading", attrs: { icon: "loading" } }, [
+        _vm._v("\n        loading\n    ")
+      ])
     ],
     1
   )
@@ -11522,7 +11531,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65076" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50462" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

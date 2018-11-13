@@ -1,3 +1,11 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .g-button {
   vertical-align: middle;
   display: inline-flex;
@@ -21,7 +29,7 @@
 }
 .g-button .icon {
   order: 1;
-  margin-right: 0.3em;
+  margin-right: 0.2em;
   margin-left: 0;
 }
 .g-button .content {
@@ -29,11 +37,14 @@
 }
 .g-button.icon-right .icon {
   order: 2;
-  margin-left: 0.3em;
+  margin-left: 0.2em;
   margin-right: 0;
 }
 .g-button.icon-right .content {
   order: 1;
+}
+.g-button .loading {
+  animation: spin 2s infinite linear;
 }.wheels-icon {
   width: 1em;
   height: 1em;
