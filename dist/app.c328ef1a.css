@@ -1,4 +1,8 @@
 .g-button {
+  vertical-align: middle;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   font-size: var(--font-size);
   height: var(--button-height);
   padding: 0 1em;
@@ -14,4 +18,27 @@
 }
 .g-button:focus {
   outline: none;
+}
+.g-button .icon {
+  order: 1;
+  margin-right: 0.3em;
+  margin-left: 0;
+}
+.g-button .content {
+  order: 2;
+}
+.g-button.icon-right .icon {
+  order: 2;
+  margin-left: 0.3em;
+  margin-right: 0;
+}
+.g-button.icon-right .content {
+  order: 1;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  overflow: hidden;
 }
