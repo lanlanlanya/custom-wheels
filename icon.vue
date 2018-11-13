@@ -1,12 +1,13 @@
 <template>
     <svg class="wheels-icon">
-        <use :xlink:href="`#i-${icon}`"></use>
+        <use :xlink:href="`#i-${name||icon}`"></use>
     </svg>
 </template>
 <script>
     export default {
         name:'wheel-icon',
         props:{
+            name:{},
             icon:{}
         }
     }

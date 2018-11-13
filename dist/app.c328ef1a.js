@@ -11342,6 +11342,7 @@ var _default = {
   // props: ['icon', 'iconPosition']
   props: {
     icon: {},
+    loading: true,
     iconPosition: {
       type: String,
       default: 'left',
@@ -11368,18 +11369,27 @@ exports.default = _default;
     "button",
     {
       staticClass: "g-button",
-      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj)
+      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
+      on: {
+        click: function($event) {
+          _vm.$emit("click")
+        }
+      }
     },
     [
-      _vm.icon
-        ? _c("g-icon", { staticClass: "icon", attrs: { icon: _vm.icon } })
+      _vm.icon && !_vm.loading
+        ? _c("g-icon", { staticClass: "icon", attrs: { name: _vm.icon } })
         : _vm._e(),
       _vm._v(" "),
-      _c("span", { staticClass: "content" }, [_vm._t("default")], 2),
+      _vm.loading
+        ? _c(
+            "g-icon",
+            { staticClass: "icon loading", attrs: { name: "loading" } },
+            [_vm._v("\n        loading\n    ")]
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _c("g-icon", { staticClass: "loading", attrs: { icon: "loading" } }, [
-        _vm._v("\n        loading\n    ")
-      ])
+      _c("span", { staticClass: "content" }, [_vm._t("default")], 2)
     ],
     1
   )
@@ -11433,6 +11443,7 @@ exports.default = void 0;
 var _default = {
   name: 'wheel-icon',
   props: {
+    name: {},
     icon: {}
   }
 };
@@ -11450,7 +11461,7 @@ exports.default = _default;
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("svg", { staticClass: "wheels-icon" }, [
-    _c("use", { attrs: { "xlink:href": "#i-" + _vm.icon } })
+    _c("use", { attrs: { "xlink:href": "#i-" + (_vm.name || _vm.icon) } })
   ])
 }
 var staticRenderFns = []
@@ -11502,7 +11513,14 @@ _vue.default.component('g-button', _button.default);
 _vue.default.component('g-icon', _icon.default);
 
 new _vue.default({
-  el: '#app'
+  el: '#app',
+  data: function data() {
+    return {
+      loading1: true,
+      loading2: false,
+      loading3: true
+    };
+  }
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"button.vue","./icon.vue":"icon.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -11531,7 +11549,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50462" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53633" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
