@@ -10,9 +10,13 @@
     </button>
 </template>
 <script>
+    import Icon from './icon'
     export default {
         name: 'wheelButton',
         // props: ['icon', 'iconPosition']
+        components:{
+            'g-icon':Icon
+        },
         props:{
             icon:{},
             loading:true,
