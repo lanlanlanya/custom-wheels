@@ -17,7 +17,9 @@ new Vue({
 });
 //单元测试
 import chai from 'chai'
+import spies from 'chai-spies'
 const expect=chai.expect
+chai.use(spies)
 {
     const div=document.createElement('div');
     document.body.appendChild(div);
@@ -47,7 +49,7 @@ const expect=chai.expect
         }
     });
     vm.$mount(div);
-    let useElement=button.$el.querySelector('use');
+    let useElement=vm.$el.querySelector('use');
     let href=useElement.getAttribute('xlink:href');
     expect(href).to.eq('#i-loading');
     vm.$el.remove();
@@ -80,11 +82,25 @@ const expect=chai.expect
         }
     });
     vm.$mount(div);
-    let svg=button.$el.querySelector('svg');
+    let svg=vm.$el.querySelector('svg');
     let {order}=window.getComputedStyle(svg);
     expect(order).to.eq('2');
     vm.$el.remove();
     vm.$destroy();
 }
+{
+    //moc
+    const Constructor=Vue.extend(Button);
+    const gButton=new Constructor({
+        propsData:{
+            icon:'settings'
+        }
+    });
+    gButton.$mount();
+    let spy=chai.spy(()=>{});
+    gButton.$on('click',spy);
+    let button=gButton.$el;
+    button.click();
+     expect(spy).to.have.been.called();
 }
 
